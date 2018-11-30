@@ -7,9 +7,13 @@ class Widget {
 public:
     Widget(DialogDirector*) {}
     virtual ~Widget() {}
-    virtual void change() = 0;
+    virtual void changed();
     virtual void handleEvent(Event*) = 0;
 private:
     DialogDirector* director;
 };
+
+void Widget::changed() {
+    director->widgetChanged(this);
+}
 #endif /* WIDGET_HPP */

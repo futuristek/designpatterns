@@ -3,10 +3,16 @@
 
 #endif /* BUTTON_HPP */
 #include "Widget.hpp"
-#include <string>
 
 class Button: public Widget {
 public:
     Button(DialogDirector* director): Widget(director) {}
+    virtual void change();
+    virtual void handleEvent(Event*);
+    virtual void setText(const char*);
     virtual ~Button() {}
 };
+
+void Button::handleEvent(Event* e) {
+    changed();
+}
